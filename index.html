@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='no-referrer' name='referrer' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/defaults.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/community-skin/video.min.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack/dist/cdn/prod.js"></script>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const mediaPlayer = document.querySelector('media-player');
+            mediaPlayer.src = getParameterByName('src');
+        });
+    </script>
+</head>
+<body>
+    <media-player poster=" " thumbnails=" " aspect-ratio="16/9" crossorigin>
+        <media-outlet></media-outlet>
+        <media-community-skin></media-community-skin>
+        <media-control-bar>
+            <media-play-button></media-play-button>
+            <media-mute-button></media-mute-button>
+            <media-volume-range></media-volume-range>
+            <media-time-range></media-time-range>
+            <media-fullscreen-button></media-fullscreen-button>
+        </media-control-bar>
+    </media-player>
+</body>
+</html>
