@@ -3,9 +3,10 @@
 <head>
     <meta content='no-referrer' name='referrer' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.10.9/player/styles/default/theme.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack@1.10.9/player/styles/default/layouts/video.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vidstack@1.10.9/cdn/with-layouts/vidstack.min.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/defaults.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/community-skin/video.min.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack/dist/cdn/prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@%5E1.0.0/dist/hls.min.js"></script>
     <style>
         body {
             background-color: black;
@@ -28,7 +29,6 @@
     </script>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@%5E1.0.0/dist/hls.min.js"></script>
     <media-player poster=" " thumbnails=" " playsinline stream-type="live" aspect-ratio="16/9" crossorigin>
         <media-outlet></media-outlet>
         <media-community-skin></media-community-skin>
