@@ -6,30 +6,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/defaults.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/community-skin/video.min.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack/dist/cdn/prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@%5E1.0.0/dist/hls.min.js"></script>
     <style>
         body {
             background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
     </style>
-    <script>
-        function getParameterByName(name, url = window.location.href) {
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const mediaPlayer = document.querySelector('media-player');
-            mediaPlayer.src = getParameterByName('src');
-        });
-    </script>
 </head>
 <body>
-    <media-player poster=" " thumbnails=" " playsinline stream-type="live" aspect-ratio="16/9" crossorigin>
+    <media-player id="mediaPlayer" src="" poster="" thumbnails="path/to/your/thumbnails.vtt" aspect-ratio="16/9" crossorigin>
         <media-outlet></media-outlet>
         <media-community-skin></media-community-skin>
         <media-control-bar>
@@ -40,5 +29,41 @@
             <media-fullscreen-button></media-fullscreen-button>
         </media-control-bar>
     </media-player>
+
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function base64Decode(str) {
+            try {
+                return atob(str);
+            } catch (e) {
+                console.error('Failed to decode Base64 string', e);
+                return '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const srcBase64 = getParameterByName('src');
+            const posterBase64 = getParameterByName('poster');
+
+            const src = srcBase64 ? base64Decode(srcBase64) : '';
+            const poster = posterBase64 ? base64Decode(posterBase64) : '';
+
+            const mediaPlayer = document.getElementById('mediaPlayer');
+            if (src) {
+                mediaPlayer.setAttribute('src', src);
+            }
+            if (poster) {
+                mediaPlayer.setAttribute('poster', poster);
+            }
+        });
+    </script>
 </body>
 </html>
