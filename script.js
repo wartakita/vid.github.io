@@ -4,9 +4,11 @@ function getParameterByName(name, url = window.location.href) {
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    var paramValue = decodeURIComponent(results[2].replace(/\+/g, ' '));
+    // Encode the parameter value with Base64
+    var base64EncodedValue = btoa(paramValue);
+    return base64EncodedValue;
 }
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const mediaPlayer = document.querySelector('media-player');
     const src = getParameterByName('src');
