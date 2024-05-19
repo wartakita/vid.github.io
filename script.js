@@ -9,10 +9,3 @@ function getParameterByName(name, url = window.location.href) {
     var base64EncodedValue = btoa(paramValue);
     return base64EncodedValue;
 }
-document.addEventListener('DOMContentLoaded', (event) => {
-    const mediaPlayer = document.querySelector('media-player');
-    const src = getParameterByName('src');
-    if (src) {
-        mediaPlayer.setAttribute('src', src);
-    }
-});
