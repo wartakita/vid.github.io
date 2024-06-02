@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (src) {
         mediaPlayer.setAttribute('src', src);
     }
-});
-// Fungsi untuk decode Base64
+
+    // Fungsi untuk decode Base64
 function decodeBase64(str) {
     return decodeURIComponent(escape(atob(str)));
 }
@@ -27,3 +27,5 @@ if (srcParam) {
     const decodedSrc = decodeBase64(srcParam);
     document.getElementById('main-iframe').src = decodedSrc;
 }
+
+});
