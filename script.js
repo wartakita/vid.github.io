@@ -9,8 +9,8 @@ function getParameterByName(name, url = window.location.href) {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const mediaPlayer = document.querySelector('media-player');
-    const src = getParameterByName('src');
-    if (src) {
-        mediaPlayer.setAttribute('src', src);
+    const src = getParameterByName('url');
+    if (url) {
+        mediaPlayer.setAttribute('url', url);
     }
 });
