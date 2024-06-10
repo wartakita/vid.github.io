@@ -10,7 +10,7 @@ function getParameterByName(name, url = window.location.href) {
 document.addEventListener('DOMContentLoaded', (event) => {
     const mediaPlayer = document.querySelector('media-player');
     const src = getParameterByName('url');
-    if (url) {
+    if (src) {
         mediaPlayer.setAttribute('url', url);
     }
 });
